@@ -1,0 +1,68 @@
+//jonas sir clear fix
+@mixin jhonsirclearfix {
+    &::after{
+        content: "";
+        display: table;
+        clear: both;
+    }    
+}
+
+//brad sir clear fix
+@mixin bradsirclearfix {
+    .group::before,
+    .group::after{
+        content: "";
+        display: table;
+    }
+    .group::after{
+        clear: both;
+    }
+    .group{
+        zoom: 1;
+    }
+}
+
+//center text
+@mixin abscenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);    
+}
+
+//MEDIA QUARY MANAGER
+
+//media queries(as per 2019-2020)
+/*0-800px:      PHONES--------------------USE MAX-WIDTH
+  
+  800-1400px:   PORTRAIT TABLETS----------USE MAX-WIDTH
+
+  1400-1600px:  LANDSCAPE TABLETS---------USE MAX-WIDTH
+
+  1600-2000px:  DESKTOP-------------------THIS IS WHERE OUR WRITTEN CSS PROPERTES IMPLY
+
+  2000-above:   MONITERS------------------USE MIN-WIDTH
+
+  media queries choices:
+-phone
+-tab-port
+-tab-land
+-desk-mon
+*/
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media only screen and (max-width:37.5em) {@content};       //600px
+    }
+
+    @if $breakpoint == tab-port {
+        @media only screen and  (max-width:56.25em) {@content};    //900px    
+    }
+
+    @if $breakpoint == tab-land {
+        @media only screen and  (max-width:75em) {@content};     //1200px
+    }
+
+    @if $breakpoint == desk-mon {
+        @media only screen and  (min-width:112.5em) {@content};     //1800px
+    }
+}
